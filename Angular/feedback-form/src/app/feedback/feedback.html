@@ -1,0 +1,43 @@
+<div class="feedback-container">
+  
+  <form *ngIf="!isSubmitted" [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" class="feedback-form">
+    <h2>Submit Your Feedback</h2>
+
+    
+    <div class="rating-section">
+      <label>Rating (1-5 stars):</label>
+      <div class="stars">
+        <input type="radio" id="star5" formControlName="rating" value="5">
+        <label for="star5" class="star">&#9733;</label>
+        <input type="radio" id="star4" formControlName="rating" value="4">
+        <label for="star4" class="star">&#9733;</label>
+        <input type="radio" id="star3" formControlName="rating" value="3">
+        <label for="star3" class="star">&#9733;</label>
+        <input type="radio" id="star2" formControlName="rating" value="2">
+        <label for="star2" class="star">&#9733;</label>
+        <input type="radio" id="star1" formControlName="rating" value="1">
+        <label for="star1" class="star">&#9733;</label>
+      </div>
+      <div *ngIf="f['rating'].invalid && f['rating'].touched" class="error">Please select a rating.</div>
+    </div>
+
+    
+    <div class="comments-section">
+      <label for="comments">Comments:</label>
+      <textarea id="comments" formControlName="comments" placeholder="Share your thoughts..."></textarea>
+      <div *ngIf="f['comments'].invalid && f['comments'].touched" class="error">
+        <span *ngIf="f['comments'].errors?.['required']">Comments are required.</span>
+        <span *ngIf="f['comments'].errors?.['minlength']">Comments must be at least 10 characters long.</span>
+      </div>
+    </div>
+
+    
+    <button type="submit" [disabled]="feedbackForm.invalid">Submit Feedback</button>
+  </form>
+
+  
+  <div *ngIf="isSubmitted" class="thank-you">
+    <h2>Thank You!</h2>
+    <p>Your feedback has been submitted successfully. We appreciate your input!</p>
+  </div>
+</div>

@@ -72,6 +72,10 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.save(order);
     }
 
+    @Override
+    public List<Order> getOrdersAboveAmount(BigDecimal amount) {
+        return orderRepository.findOrdersAboveAmount(amount);
+    }
 
     @Override
     public void deleteOrder(Long id) {
@@ -80,11 +84,5 @@ public class OrderServiceImpl implements OrderService {
         }
         orderRepository.deleteById(id);
     }
-
-    @Override
-    public List<Order> getOrdersAboveAmount(BigDecimal amount) {
-        return orderRepository.findOrdersAboveAmount(amount);
-    }
-
 
 }
