@@ -1,0 +1,41 @@
+<h2>Student Enrollment Form</h2>
+
+<form [formGroup]="enrollmentForm" (ngSubmit)="submitForm()">
+
+  <!-- Student Name -->
+  <label>Student Name</label>
+  <input type="text" formControlName="name">
+  <div *ngIf="enrollmentForm.get('name')?.invalid && enrollmentForm.get('name')?.touched">
+    Name is required (min 3 characters)
+  </div>
+
+  <!-- Email -->
+  <label>Email</label>
+  <input type="email" formControlName="email">
+  <div *ngIf="enrollmentForm.get('email')?.invalid && enrollmentForm.get('email')?.touched">
+    Enter a valid email
+  </div>
+
+  <!-- Mobile -->
+  <label>Mobile Number</label>
+  <input type="text" formControlName="mobile">
+  <div *ngIf="enrollmentForm.get('mobile')?.invalid && enrollmentForm.get('mobile')?.touched">
+    Enter valid 10-digit mobile number
+  </div>
+
+  <!-- Course Selection -->
+  <label>Select Course</label>
+  <select formControlName="course">
+    <option value="">-- Select Course --</option>
+    <option *ngFor="let course of courses" [value]="course">
+      {{ course }}
+    </option>
+  </select>
+  <div *ngIf="enrollmentForm.get('course')?.invalid && enrollmentForm.get('course')?.touched">
+    Course selection is required
+  </div>
+
+  <br><br>
+  <button type="submit">Enroll</button>
+
+</form>
