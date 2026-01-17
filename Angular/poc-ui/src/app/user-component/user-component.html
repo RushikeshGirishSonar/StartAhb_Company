@@ -1,0 +1,52 @@
+<h2>User Form</h2>
+
+<form (ngSubmit)="submit()" #userForm="ngForm">
+
+  <input
+    type="text"
+    name="name"
+    [(ngModel)]="user.name"
+    placeholder="Name"
+    required />
+
+  <input
+    type="email"
+    name="email"
+    [(ngModel)]="user.email"
+    placeholder="Email"
+    required />
+
+  <input
+    type="text"
+    name="mobile"
+    [(ngModel)]="user.mobile"
+    placeholder="Mobile"
+    required />
+
+  <button type="submit">Submit</button>
+
+</form>
+
+
+<hr>
+
+<h2>User List</h2>
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Mobile</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let u of users">
+      <td>{{ u.id }}</td>
+      <td>{{ u.name }}</td>
+      <td>{{ u.email }}</td>
+      <td>{{ u.mobile }}</td>
+    </tr>
+  </tbody>
+</table>
