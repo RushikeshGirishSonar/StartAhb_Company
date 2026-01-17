@@ -1,10 +1,7 @@
 package com.company.Order.controller;
 
 import com.company.Order.DTO.AuthRequest;
-import com.company.Order.DTO.LoginRequest;
-import com.company.Order.Entity.User;
 import com.company.Order.Utility.JwtUtil;
-import com.company.Order.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
