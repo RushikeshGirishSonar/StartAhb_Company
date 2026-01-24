@@ -1,0 +1,102 @@
+/* Container & Typography */
+h2 {
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 20px;
+}
+
+/* Add Order Button */
+.add-btn {
+  background-color: #28a745; /* Success Green */
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 20px;
+  transition: background-color 0.2s;
+}
+
+.add-btn:hover {
+  background-color: #218838;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden; /* Ensures rounded corners work */
+}
+
+thead {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+}
+
+th {
+  text-align: left;
+  padding: 12px 15px;
+  color: #495057;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  color: #333;
+  vertical-align: middle;
+}
+
+/* Zebra Striping & Hover */
+tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+tbody tr:hover {
+  background-color: #f1f4f9;
+}
+
+/* Action Buttons */
+td button {
+  padding: 6px 12px;
+  margin-right: 8px;
+  border: 1px solid #007bff;
+  background-color: transparent;
+  color: #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+td button:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.delete-btn {
+  border-color: #dc3545 !important;
+  color: #dc3545 !important;
+}
+
+.delete-btn:hover {
+  background-color: #dc3545 !important;
+  color: white !important;
+}
+
+/* Empty State Styling */
+p {
+  color: #666;
+  font-style: italic;
+  padding: 20px;
+  background: #fdfdfd;
+  border: 1px dashed #ccc;
+  text-align: center;
+}

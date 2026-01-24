@@ -2,9 +2,13 @@ package com.company.Order.service;
 
 import com.company.Order.Entity.Order;
 import com.company.Order.Entity.OrderStatus;
+import com.company.Order.Entity.User;
 import com.company.Order.repository.OrderRepository;
+import com.company.Order.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -15,14 +19,32 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
+    private final UserRepository userRepository;
 
-    public OrderServiceImpl(OrderRepository orderRepository) {
+    public OrderServiceImpl(OrderRepository orderRepository, UserRepository userRepository) {
 
         this.orderRepository = orderRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
     public Order createOrder(Order order) {
+
+        // ✅ Get logged-in username from JWT
+        Authentication auth =
+                SecurityContextHolder.getContext().getAuthentication();
+
+
+        String username = auth.getName();
+
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        // ✅ Attach user to order
+        order.setUser(user);
+
+        // ❌ DO NOT accept customerName from client
+        order.setCustomerName(user.getUsername());
 
         if (order.getQuantity() <= 0) {
             throw new RuntimeException("Quantity must be greater than zero");
@@ -53,7 +75,7 @@ public class OrderServiceImpl implements OrderService {
     public Order updateOrder(Long id, Order order) {
         Order existingOrder = getOrderById(id);
 
-        existingOrder.setCustomerName(order.getCustomerName());
+        existingOrder.setCustomerName(existingOrder.getUser().getUsername());
         existingOrder.setProductName(order.getProductName());
         existingOrder.setQuantity(order.getQuantity());
         existingOrder.setPrice(order.getPrice());

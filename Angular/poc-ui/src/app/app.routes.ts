@@ -4,7 +4,7 @@ import { StudentForm } from './student-form/student-form';
 
 export const routes: Routes = [
     {
-        path: 'get-users',
+        path: 'table',
         component: StudentForm,
         pathMatch: 'full'
     },

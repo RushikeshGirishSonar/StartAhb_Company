@@ -1,0 +1,14 @@
+<div class="container mt-4">
+  <h2>Doctor Dashboard</h2>
+
+<div class="card mt-3" *ngFor="let doctor of doctors">
+  <div class="card-body">
+    <h4>{{ doctor.name }}</h4>
+    <p><strong>Specialization:</strong> {{ doctor.specialization }}</p>
+    <p><strong>Hospital:</strong> {{ doctor.hospital }}</p>
+    <p><strong>Experience:</strong> {{ doctor.experience }} years</p>
+    <p>{{ doctor.bio }}</p>
+  </div>
+</div>
+
+</div>

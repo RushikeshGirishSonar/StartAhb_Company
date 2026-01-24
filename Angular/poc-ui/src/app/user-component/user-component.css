@@ -1,0 +1,73 @@
+/* Page heading */
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Form container */
+form {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  padding: 25px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Input fields */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* Input focus effect */
+input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Submit button */
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Submit hover */
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Navigation button */
+button {
+  display: block;
+  margin: auto;
+  padding: 10px 20px;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Router link inside button */
+button a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* Button hover */
+button:hover {
+  background-color: #1e7e34;
+}

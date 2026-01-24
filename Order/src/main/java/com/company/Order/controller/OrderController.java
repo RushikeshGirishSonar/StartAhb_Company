@@ -2,22 +2,36 @@ package com.company.Order.controller;
 
 import com.company.Order.Entity.Order;
 import com.company.Order.Entity.OrderStatusUpdateRequest;
+import com.company.Order.Entity.User;
+import com.company.Order.repository.OrderRepository;
+import com.company.Order.repository.UserRepository;
 import com.company.Order.service.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/orders")
+@CrossOrigin(origins = "http://localhost:4200")
 public class OrderController {
 
     private final OrderService orderService;
+    private final OrderRepository orderRepository;
+    private final UserRepository userRepository;
 
-    public OrderController(OrderService orderService) {
+    public OrderController(
+            OrderService orderService,
+            OrderRepository orderRepository,
+            UserRepository userRepository
+    ) {
         this.orderService = orderService;
+        this.orderRepository = orderRepository;
+        this.userRepository = userRepository;
     }
 
     // create order
@@ -51,9 +65,10 @@ public class OrderController {
 
     // delete the order
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteOrder(@PathVariable Long id) {
+    public ResponseEntity<String> deleteOrder(@PathVariable Long id)
+    {
         orderService.deleteOrder(id);
-        return ResponseEntity.ok("Order deleted successfully");
+        return ResponseEntity.noContent().build();
     }
 
     //update order status
@@ -73,6 +88,18 @@ public class OrderController {
         return ResponseEntity.ok(orderService.getOrdersAboveAmount(amount));
     }
 
+    @GetMapping("/my")
+    public ResponseEntity<List<Order>> getMyOrders() {
+
+        String username = SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getName();
+
+        User user = userRepository.findByUsername(username).get();
+
+        return ResponseEntity.ok(orderRepository.findByUser(user));
+    }
 
 
 }

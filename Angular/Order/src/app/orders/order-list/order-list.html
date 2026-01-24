@@ -1,0 +1,43 @@
+<h2>Order List</h2>
+
+<button routerLink="/orders/new" class="add-btn">
+  + Add Order
+</button>
+
+<table *ngIf="orders$ | async as orders; else noData">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Customer</th>
+      <th>Product</th>
+      <th>Qty</th>
+      <th>Price</th>
+      <th>Total</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let o of orders">
+      <td>{{ o.id }}</td>
+      <td>{{ o.customerName }}</td>
+      <td>{{ o.productName }}</td>
+      <td>{{ o.quantity }}</td>
+      <td>₹{{ o.price }}</td>
+      <td>₹{{ o.quantity * o.price }}</td>
+      <td>{{ o.status }}</td>
+
+      <td>
+
+      <button (click)="onEdit(o.id!)">Edit</button>
+      <button class="delete-btn" (click)="deleteOrder(o.id!)">Delete</button>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noData>
+  <p>No orders found.</p>
+</ng-template>

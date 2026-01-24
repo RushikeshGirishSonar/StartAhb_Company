@@ -1,0 +1,59 @@
+/* Section heading */
+h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Horizontal line spacing */
+hr {
+  margin: 30px 0;
+}
+
+/* Table container */
+table {
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Table header */
+thead {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Table headers & cells */
+th,
+td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+/* Row hover effect */
+tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Alternate row color */
+tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Responsive table */
+@media (max-width: 600px) {
+  table {
+    font-size: 12px;
+  }
+
+  th,
+  td {
+    padding: 8px;
+  }
+}

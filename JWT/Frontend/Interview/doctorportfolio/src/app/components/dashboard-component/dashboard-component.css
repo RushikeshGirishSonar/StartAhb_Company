@@ -1,0 +1,47 @@
+/* Container spacing */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Heading */
+h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* Doctor card styling */
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background-color: #fdfdfd;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-body h4 {
+  margin-bottom: 10px;
+  color: #34495e;
+}
+
+.card-body p {
+  margin: 4px 0;
+  color: #555;
+}
+
+.card-body strong {
+  color: #2c3e50;
+}

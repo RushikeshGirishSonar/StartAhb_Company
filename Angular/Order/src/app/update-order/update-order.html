@@ -1,0 +1,54 @@
+<h2>Create Order</h2>
+<div class="form-actions">
+<form (ngSubmit)="updateOrder()">
+
+  <label>Customer Name</label>
+  <input
+    type="text"
+    name="customerName"
+    [(ngModel)]="order.customerName"
+    required />
+
+  <label>Product Name</label>
+  <input
+    type="text"
+    name="productName"
+    [(ngModel)]="order.productName"
+    required />
+
+  <label>Quantity</label>
+  <input
+    type="number"
+    name="quantity"
+    [(ngModel)]="order.quantity"
+    min="1"
+    required />
+
+  <label>Price</label>
+  <input
+    type="number"
+    name="price"
+    [(ngModel)]="order.price"
+    min="0"
+    required />
+
+  <label>Delivery Address</label>
+  <textarea
+    name="deliveryAddress"
+    [(ngModel)]="order.deliveryAddress"
+    required></textarea>
+
+  <label>Status</label>
+  <select
+    name="status"
+    [(ngModel)]="order.status"
+    required>
+    <option *ngFor="let s of orderStatuses" [value]="s">
+      {{ s }}
+    </option>
+  </select>
+
+  <button type="submit">Save Order</button>
+  <button type="button" class="cancel-btn" routerLink="/orders">Cancel</button>
+</form>
+</div>
